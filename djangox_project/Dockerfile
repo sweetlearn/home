@@ -1,13 +1,4 @@
 
-FROM python:3
-ENV PYTHONUNBUFFERED 1
-RUN mkdir /code
-WORKDIR /code
-COPY requirements.txt /code/
-RUN pip install -r requirements.txt
-COPY . /code/
-
-```
 # Pull base image
 FROM python:3.7-slim
 
@@ -16,14 +7,11 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set work directory
-WORKDIR /code
+WORKDIR /django_project
 
 # Install dependencies
-RUN pip install pipenv
-COPY Pipfile Pipfile.lock /code/
-RUN pipenv install --system
+COPY requirements.txt /django_project/
+RUN pip install -r requirements.txt
 
 # Copy project
-COPY . /code/
-
-```
+COPY . /django_project/
