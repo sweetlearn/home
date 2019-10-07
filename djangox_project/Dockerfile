@@ -7,6 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set work directory
+RUN mkdir /django_project
 WORKDIR /django_project
 
 # Install dependencies
